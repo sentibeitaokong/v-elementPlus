@@ -9,7 +9,7 @@ export  interface ButtonProps{
   round?:boolean                             //圆角
   circle?:boolean                            //圆形
   disabled?:boolean                          //禁用
-  icon?:boolean                              //图标
+  icon?:string                              //图标
   loading?:boolean                           //过渡
   nativeType?:NativeType                     //原生type功能
   autofocus?:boolean                         //自动对焦
