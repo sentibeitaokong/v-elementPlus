@@ -30,7 +30,7 @@
       <Button size="large">Large</Button>
       <Button size="small">Small</Button><br/><br/>
       <Button size="large" loading>Loading</Button>
-      <Button size="large" icon="arrow-up">Icon</Button><br/><br/>
+      <Button size="large" icon="address-card">Icon</Button><br/><br/>
     </div>
 <!--    <Icon icon="arrow-up" :size="size" type="danger"/>-->
   </div>
