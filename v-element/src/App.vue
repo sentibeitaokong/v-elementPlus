@@ -1,6 +1,6 @@
 <template>
   <header style="display: inline-block">
-    <Tooltip :trigger="trigger" ref="tooltipRef" placement="right" :close-delay="200" :open-delay="200">
+    <Tooltip :trigger="trigger" ref="tooltipRef" placement="left" :close-delay="200" :open-delay="200">
       <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
       <template #content>
         <h1>hello world</h1>
@@ -69,7 +69,7 @@ onMounted(() => {
 
 //tooltip测试
 const tooltipRef = ref<TooltipInstance | null>(null)
-const trigger = ref<any>('click')
+const trigger = ref<any>('hover')
 const options:UseFloatingOptions={placement:'bottom'}
 //打开tooltip
 const open=()=>{

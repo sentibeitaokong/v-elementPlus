@@ -26,7 +26,7 @@ import { debounce } from 'lodash-es'
 
 const {
   placement = 'right',
-  trigger = 'hover',
+  trigger = 'click',
   transition = 'fade',
   openDelay = 0,
   closeDelay = 0,
@@ -112,7 +112,7 @@ const open = () => {
   openTimes++
   console.log('openTimes', openTimes)
   isOpen.value = true
-  emits('visible-change', true)
+  emits('visible-change', false)
 }
 const close = () => {
   closeTimes++
@@ -133,14 +133,6 @@ const closeFinal = () => {
   closeDebounce()
 }
 
-const attachEvents = () => {
-  if (trigger === 'hover') {
-    events['mouseenter'] = openFinal
-    outEvents['mouseleave'] = closeFinal
-  } else {
-    events['click'] = togglePopper
-  }
-}
 const togglePopper = () => {
   if (isOpen.value) {
     closeFinal()
@@ -148,6 +140,22 @@ const togglePopper = () => {
     openFinal()
   }
 }
+
+const attachEvents = () => {
+  if (trigger === 'hover') {
+    events['mouseenter'] = openFinal
+    outEvents['mouseleave'] = closeFinal
+  } else if(trigger==='click') {
+    // events['click']=togglePopper
+    //测试无法监测方法调用
+    if (isOpen.value) {
+      closeFinal()
+    } else {
+      openFinal()
+    }
+  }
+}
+
 
 useClickOutside(popperOutContainer, () => {
   if (isOpen.value && trigger === 'click' && !manual) {
