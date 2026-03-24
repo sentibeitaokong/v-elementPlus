@@ -7,21 +7,24 @@
 <!--      </template>-->
 <!--    </Tooltip>-->
 <!--  </header>-->
-  <main>
-    <Dropdown
-      :menu-options="menuOptions"
-      :trigger="trigger"
-      ref="tooltipRef"
-      placement="left"
-      :close-delay="200"
-      :open-delay="200"
-      manual
-      @visible-change="e=>inlineConsole('visibleChange',e)"
-      @select="e=>inlineConsole('select',e)"
-    >
-      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
-    </Dropdown>
-  </main>
+<!--  <main>-->
+<!--    <Dropdown-->
+<!--      :menu-options="menuOptions"-->
+<!--      :trigger="trigger"-->
+<!--      ref="tooltipRef"-->
+<!--      placement="left"-->
+<!--      :close-delay="200"-->
+<!--      :open-delay="200"-->
+<!--      manual-->
+<!--      @visible-change="e=>inlineConsole('visibleChange',e)"-->
+<!--      @select="e=>inlineConsole('select',e)"-->
+<!--    >-->
+<!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
+<!--    </Dropdown>-->
+<!--  </main>-->
+<!--  <header>-->
+<!--    <Message message="hello Message" :duration="0"  show-close></Message>-->
+<!--  </header>-->
   <div>
 
     <div>
@@ -65,20 +68,26 @@ import Tooltip from '@/components/Tooltip/Tooltip.vue'
 import Button from '@/components/Button/Button.vue'
 import Collapse from '@/components/Collapse/Collapse.vue'
 import CollapseItem from '@/components/Collapse/CollapseItem.vue'
-import type {TooltipInstance} from '@/components/Tooltip/type.ts'
-import type { UseFloatingOptions } from '@floating-ui/vue'
-import Icon from '@/components/Icon/Icon.vue'
-import { onMounted, ref } from 'vue'
-import type {MenuOptions} from '@/components/Dropdown/types.ts'
 import Dropdown from '@/components/Dropdown/Dropdown.vue'
 // import Dropdown from '@/components/Dropdown/Dropdown.tsx'
+import Icon from '@/components/Icon/Icon.vue'
+import Message from '@/components/Message/Message.vue'
+
+import type {TooltipInstance} from '@/components/Tooltip/type.ts'
+import type { UseFloatingOptions } from '@floating-ui/vue'
+import { onMounted, ref } from 'vue'
+import type {MenuOptions} from '@/components/Dropdown/types.ts'
 import { h } from 'vue'
+import {createMessage} from '@/components/Message/method.ts'
 
 //collasp默认打开
 const openValue = ref<string[]>(['a'])
 //icon的size属性
 const size = ref<any>('3x')
 onMounted(() => {
+  createMessage({message:'hello message',duration:3000,showClose:true})
+  createMessage({message:'hello message',duration:3000,showClose:true})
+  createMessage({message:'hello message',duration:3000,showClose:true})
   setTimeout(()=>{
     // openValue.value = ['a', 'b']
     size.value = '2xl'
