@@ -74,7 +74,7 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue'
 // import Dropdown from '@/components/Dropdown/Dropdown.tsx'
 import { h } from 'vue'
 
-//dropdowm默认打开
+//collasp默认打开
 const openValue = ref<string[]>(['a'])
 //icon的size属性
 const size = ref<any>('3x')
