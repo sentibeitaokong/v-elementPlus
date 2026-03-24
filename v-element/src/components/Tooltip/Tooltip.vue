@@ -18,12 +18,15 @@
 </template>
 
 <script lang="ts" setup>
-import type { TooltiProps, TooltipEmits, TooltipInstance } from '@/components/Tooltip/type.ts'
+
+import type { TooltipProps, TooltipEmits, TooltipInstance } from '@/components/Tooltip/type.ts'
 import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import { useFloating, autoUpdate, arrow, offset, flip, shift } from '@floating-ui/vue'
 import useClickOutside from '@/hooks/useClickOutside.ts'
 import { debounce } from 'lodash-es'
-
+defineOptions({
+  name:'VkTooltip'
+})
 const {
   placement = 'right',
   trigger = 'click',
@@ -32,7 +35,7 @@ const {
   closeDelay = 0,
   manual,
   popperOptions,
-} = defineProps<TooltiProps>()
+} = defineProps<TooltipProps>()
 
 const popperChangeOptions = computed(() => {
   return {
@@ -84,7 +87,6 @@ const arrowStyles = computed(() => {
   if (!arrowData) return {};
 
   const { x, y } = arrowData;
-  console.log(arrowData)
 
   // 核心逻辑：获取当前 placement 的“反向边”（Static Side）
   // 如果 Tooltip 在上方 (top)，箭头应该在 Tooltip 的底部 (bottom) 探出来
@@ -105,18 +107,11 @@ const arrowStyles = computed(() => {
   };
 });
 
-let openTimes = 0
-let closeTimes = 0
-
 const open = () => {
-  openTimes++
-  console.log('openTimes', openTimes)
   isOpen.value = true
-  emits('visible-change', false)
+  emits('visible-change', true)
 }
 const close = () => {
-  closeTimes++
-  console.log('closeTimes', closeTimes)
   isOpen.value = false
   emits('visible-change', false)
 }
@@ -146,22 +141,19 @@ const attachEvents = () => {
     events['mouseenter'] = openFinal
     outEvents['mouseleave'] = closeFinal
   } else if(trigger==='click') {
-    // events['click']=togglePopper
-    //测试无法监测方法调用
-    if (isOpen.value) {
-      closeFinal()
-    } else {
-      openFinal()
-    }
+    events['click']=togglePopper
   }
 }
-
 
 useClickOutside(popperOutContainer, () => {
   if (isOpen.value && trigger === 'click' && !manual) {
     closeFinal()
   }
+  if (isOpen.value) {
+    emits('click-outside', true)
+  }
 })
+
 //监听trigger事件是否修改，修改了就重新添加
 watch(
   () => trigger,
@@ -174,14 +166,18 @@ watch(
   },
 )
 
-onMounted(() => {
-  if (manual) {
+if (!manual) {
+  attachEvents()
+}
+watch(() => manual, (isManual) => {
+  if (isManual) {
     events = {}
     outEvents = {}
   } else {
     attachEvents()
   }
 })
+
 
 onUnmounted(() => {
   isOpen.value = false

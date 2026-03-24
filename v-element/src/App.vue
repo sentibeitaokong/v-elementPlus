@@ -1,12 +1,27 @@
 <template>
-  <header style="display: inline-block">
-    <Tooltip :trigger="trigger" ref="tooltipRef" placement="left" :close-delay="200" :open-delay="200">
+<!--  <header style="display: inline-block">-->
+<!--    <Tooltip :trigger="trigger" ref="tooltipRef" placement="left" :close-delay="200" manual :open-delay="200">-->
+<!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
+<!--      <template #content>-->
+<!--        <h1>hello world</h1>-->
+<!--      </template>-->
+<!--    </Tooltip>-->
+<!--  </header>-->
+  <main>
+    <Dropdown
+      :menu-options="menuOptions"
+      :trigger="trigger"
+      ref="tooltipRef"
+      placement="left"
+      :close-delay="200"
+      :open-delay="200"
+      manual
+      @visible-change="e=>inlineConsole('visibleChange',e)"
+      @select="e=>inlineConsole('select',e)"
+    >
       <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
-      <template #content>
-        <h1>hello world</h1>
-      </template>
-    </Tooltip>
-  </header>
+    </Dropdown>
+  </main>
   <div>
 
     <div>
@@ -54,6 +69,10 @@ import type {TooltipInstance} from '@/components/Tooltip/type.ts'
 import type { UseFloatingOptions } from '@floating-ui/vue'
 import Icon from '@/components/Icon/Icon.vue'
 import { onMounted, ref } from 'vue'
+import type {MenuOptions} from '@/components/Dropdown/types.ts'
+import Dropdown from '@/components/Dropdown/Dropdown.vue'
+// import Dropdown from '@/components/Dropdown/Dropdown.tsx'
+import { h } from 'vue'
 
 //dropdowm默认打开
 const openValue = ref<string[]>(['a'])
@@ -69,7 +88,7 @@ onMounted(() => {
 
 //tooltip测试
 const tooltipRef = ref<TooltipInstance | null>(null)
-const trigger = ref<any>('hover')
+const trigger = ref<any>('click')
 const options:UseFloatingOptions={placement:'bottom'}
 //打开tooltip
 const open=()=>{
@@ -78,6 +97,17 @@ const open=()=>{
 //关闭tooltip
 const close=()=>{
   tooltipRef.value?.hide()
+}
+
+//测试dropdown
+const menuOptions:MenuOptions[]=[
+  { key: 1, label:h('b', 'this is bold') },
+  { key: 2, label: 'item2', disabled: true },
+  { key: 3, label: 'item3', divided: true },
+  { key: 4, label: 'item4' }
+]
+const inlineConsole=(...args:any)=>{
+  console.log(...args)
 }
 
 </script>

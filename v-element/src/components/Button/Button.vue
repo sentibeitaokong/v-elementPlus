@@ -28,7 +28,7 @@ import Icon from '../Icon/Icon.vue'
 import type {ButtonProps,ButtonInstance} from "@/components/Button/type.ts";
 import {ref} from 'vue'
 defineOptions({
-  name:'VkButtons'
+  name:'VkButton'
 })
 withDefaults(defineProps<ButtonProps>(),{
   nativeType:'button'

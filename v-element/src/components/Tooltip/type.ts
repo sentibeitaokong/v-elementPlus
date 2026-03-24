@@ -1,6 +1,6 @@
 import type { Placement, UseFloatingOptions } from '@floating-ui/vue'
 
-export interface TooltiProps {
+export interface TooltipProps {
     content?: string;
     trigger?: 'hover'|'click';
     placement?:Placement;
@@ -13,6 +13,7 @@ export interface TooltiProps {
 
 export interface TooltipEmits {
   (e:'visible-change',value:boolean):void
+  (e: 'click-outside', value: boolean) : void;
 }
 
 export interface TooltipInstance {
