@@ -85,9 +85,10 @@ const openValue = ref<string[]>(['a'])
 //icon的size属性
 const size = ref<any>('3x')
 onMounted(() => {
-  createMessage({message:'hello message',duration:3000,showClose:true})
-  createMessage({message:'hello message',duration:3000,showClose:true})
-  createMessage({message:'hello message',duration:3000,showClose:true})
+  createMessage({message:'hello message',duration:2000,showClose:true})
+  createMessage({message:'hello message',duration:0,type: 'success',showClose:true})
+  createMessage({message:'hello message',duration:0,type: 'danger',showClose:true})
+  // createMessage({message:'hello message',duration:1000,showClose:true})
   setTimeout(()=>{
     // openValue.value = ['a', 'b']
     size.value = '2xl'
