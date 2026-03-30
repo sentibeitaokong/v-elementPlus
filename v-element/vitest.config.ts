@@ -8,6 +8,8 @@ export default mergeConfig(
     test: {
       environment: 'jsdom',
       exclude: [...configDefaults.exclude, 'e2e/**'],
+      // 👇 告诉 Vitest 在运行每个测试前，先执行这个文件
+      // setupFiles: ['./vitest.setup.ts'],
       root: fileURLToPath(new URL('./', import.meta.url)),
     },
   }),

@@ -60,6 +60,8 @@
       <Button size="large" icon="address-card">Icon</Button><br /><br />
     </div>
         <Icon icon="arrow-up" :size="size" type="danger"/>
+    <Input v-model="test" placeholder="基础文本框，请输入" />
+    <span>{{test}}</span>
   </div>
 </template>
 
@@ -72,6 +74,7 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue'
 // import Dropdown from '@/components/Dropdown/Dropdown.tsx'
 import Icon from '@/components/Icon/Icon.vue'
 import Message from '@/components/Message/Message.vue'
+import Input from '@/components/Input/Input.vue'
 
 import type {TooltipInstance} from '@/components/Tooltip/type.ts'
 import type { UseFloatingOptions } from '@floating-ui/vue'
@@ -119,6 +122,9 @@ const menuOptions:MenuOptions[]=[
 const inlineConsole=(...args:any)=>{
   console.log(...args)
 }
+
+//测试input输入框
+const test=ref('test')
 
 </script>
 
