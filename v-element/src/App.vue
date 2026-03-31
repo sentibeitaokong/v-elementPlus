@@ -1,13 +1,13 @@
 <template>
-<!--  <header style="display: inline-block">-->
-<!--    <Tooltip :trigger="trigger" ref="tooltipRef" placement="left" :close-delay="200" manual :open-delay="200">-->
-<!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
-<!--      <template #content>-->
-<!--        <h1>hello world</h1>-->
-<!--      </template>-->
-<!--    </Tooltip>-->
-<!--  </header>-->
-<!--  <main>-->
+  <header style="display: inline-block">
+    <Tooltip :trigger="trigger" ref="tooltipRef" placement="bottom" :close-delay="200" manual :open-delay="200">
+      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
+      <template #content>
+        <h1>hello world</h1>
+      </template>
+    </Tooltip>
+  </header>
+  <main>
 <!--    <Dropdown-->
 <!--      :menu-options="menuOptions"-->
 <!--      :trigger="trigger"-->
@@ -21,22 +21,22 @@
 <!--    >-->
 <!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
 <!--    </Dropdown>-->
-<!--  </main>-->
-<!--  <header>-->
-<!--    <Message message="hello Message" :duration="0"  show-close></Message>-->
-<!--  </header>-->
+  </main>
+  <header>
+    <Message message="hello Message" :duration="0"  show-close></Message>
+  </header>
   <div>
 
-    <div>
-      <Collapse v-model="openValue" accordion>
-        <CollapseItem name="a" title="2222" disabled>
-          <div>aaaa</div>
-        </CollapseItem>
-        <CollapseItem name="b" title="333">
-          <div>aaaa</div>
-        </CollapseItem>
-      </Collapse>
-    </div>
+<!--    <div>-->
+<!--      <Collapse v-model="openValue" accordion>-->
+<!--        <CollapseItem name="a" title="2222" disabled>-->
+<!--          <div>aaaa</div>-->
+<!--        </CollapseItem>-->
+<!--        <CollapseItem name="b" title="333">-->
+<!--          <div>aaaa</div>-->
+<!--        </CollapseItem>-->
+<!--      </Collapse>-->
+<!--    </div>-->
     <div>
 
       <Button @click="open">Test Button</Button>
@@ -60,8 +60,15 @@
       <Button size="large" icon="address-card">Icon</Button><br /><br />
     </div>
         <Icon icon="arrow-up" :size="size" type="danger"/>
-    <Input v-model="test" placeholder="基础文本框，请输入" />
+    <Input v-model="test" type="text" placeholder="基础文本框，请输入" />
     <span>{{test}}</span>
+
+    <br/>
+    <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>
+    {{value}}
+
+    <Select v-model="selectValue" :options="selectOptions" placeholder="请选择"></Select>
+    {{selectValue}}
   </div>
 </template>
 
@@ -75,6 +82,8 @@ import Dropdown from '@/components/Dropdown/Dropdown.vue'
 import Icon from '@/components/Icon/Icon.vue'
 import Message from '@/components/Message/Message.vue'
 import Input from '@/components/Input/Input.vue'
+import Switch from '@/components/Switch/Switch.vue'
+import Select from '@/components/Select/Select.vue'
 
 import type {TooltipInstance} from '@/components/Tooltip/type.ts'
 import type { UseFloatingOptions } from '@floating-ui/vue'
@@ -82,6 +91,7 @@ import { onMounted, ref } from 'vue'
 import type {MenuOptions} from '@/components/Dropdown/types.ts'
 import { h } from 'vue'
 import {createMessage} from '@/components/Message/method.ts'
+import type { SelectOption } from '@/components/Select/types.ts'
 
 //collasp默认打开
 const openValue = ref<string[]>(['a'])
@@ -126,6 +136,18 @@ const inlineConsole=(...args:any)=>{
 //测试input输入框
 const test=ref('test')
 
+
+//测试switch
+const value=ref('right')
+
+//测试select
+const selectOptions:SelectOption[]=[
+  { value: '1', label:'item1' },
+  { value: '2', label: 'item2' },
+  { value: '3', label: 'item3', },
+  { value: '4', label: 'item4' }
+]
+const selectValue=ref('1')
 </script>
 
 <style>
