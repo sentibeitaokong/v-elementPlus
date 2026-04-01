@@ -17,7 +17,7 @@
 <script lang="ts" setup>
 
 import type { TooltipProps, TooltipEmits, TooltipInstance } from '@/components/Tooltip/type.ts'
-import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import { computed, onUnmounted, reactive, ref, watch } from 'vue'
 import { useFloating, autoUpdate, arrow, offset, flip, shift, size } from '@floating-ui/vue'
 import useClickOutside from '@/hooks/useClickOutside.ts'
 import { debounce } from 'lodash-es'
@@ -35,7 +35,15 @@ const {
 } = defineProps<TooltipProps>()
 
 const popperChangeOptions = computed(() => {
-  const middleware=[offset(10),shift({ padding: 8 }),arrow({ element: arrowRef, padding: 4 })]
+  const middleware=[
+    offset(10),
+    shift({ padding: 8 }),
+    // flip({
+    //   // 可选配置：翻转的备选顺序，默认会自动寻找可用空间
+    //   fallbackPlacements: ['bottom', 'right', 'left']
+    // }),
+    arrow({ element: arrowRef, padding: 4 })
+  ]
   let middlewareFilter
   //合并middleware
   if(popperOptions?.middleware){

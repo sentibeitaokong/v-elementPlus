@@ -1,12 +1,12 @@
 <template>
-  <header style="display: inline-block">
-    <Tooltip :trigger="trigger" ref="tooltipRef" placement="bottom" :close-delay="200" manual :open-delay="200">
-      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
-      <template #content>
-        <h1>hello world</h1>
-      </template>
-    </Tooltip>
-  </header>
+<!--  <header style="display: inline-block">-->
+<!--    <Tooltip :trigger="trigger" ref="tooltipRef" placement="bottom" :close-delay="200" manual :open-delay="200">-->
+<!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
+<!--      <template #content>-->
+<!--        <h1>hello world</h1>-->
+<!--      </template>-->
+<!--    </Tooltip>-->
+<!--  </header>-->
   <main>
 <!--    <Dropdown-->
 <!--      :menu-options="menuOptions"-->
@@ -22,9 +22,8 @@
 <!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
 <!--    </Dropdown>-->
   </main>
-  <header>
-    <Message message="hello Message" :duration="0"  show-close></Message>
-  </header>
+<!--  <header>-->
+<!--  </header>-->
   <div>
 
 <!--    <div>-->
@@ -37,31 +36,31 @@
 <!--        </CollapseItem>-->
 <!--      </Collapse>-->
 <!--    </div>-->
-    <div>
+<!--    <div>-->
 
-      <Button @click="open">Test Button</Button>
-      <Button plain @click="close">Plain Button</Button>
-      <Button round>Round Button</Button>
-      <Button circle>VK</Button>
-      <Button disabled>Disabled Button</Button><br /><br />
-      <Button type="primary">Primary</Button>
-      <Button type="success">Success</Button>
-      <Button type="info">Info</Button>
-      <Button type="warning">Warning</Button>
-      <Button type="danger">Danger</Button><br /><br />
-      <Button type="primary" plain>Primary</Button>
-      <Button type="success" plain>Success</Button>
-      <Button type="info" plain>Info</Button>
-      <Button type="warning" plain>Warning</Button>
-      <Button type="danger" plain>Danger</Button><br /><br />
-      <Button size="large">Large</Button>
-      <Button size="small">Small</Button><br /><br />
-      <Button size="large" loading>Loading</Button>
-      <Button size="large" icon="address-card">Icon</Button><br /><br />
-    </div>
-        <Icon icon="arrow-up" :size="size" type="danger"/>
-    <Input v-model="test" type="text" placeholder="基础文本框，请输入" />
-    <span>{{test}}</span>
+<!--      <Button @click="open">Test Button</Button>-->
+<!--      <Button plain @click="close">Plain Button</Button>-->
+<!--      <Button round>Round Button</Button>-->
+<!--      <Button circle>VK</Button>-->
+<!--      <Button disabled>Disabled Button</Button><br /><br />-->
+<!--      <Button type="primary">Primary</Button>-->
+<!--      <Button type="success">Success</Button>-->
+<!--      <Button type="info">Info</Button>-->
+<!--      <Button type="warning">Warning</Button>-->
+<!--      <Button type="danger">Danger</Button><br /><br />-->
+<!--      <Button type="primary" plain>Primary</Button>-->
+<!--      <Button type="success" plain>Success</Button>-->
+<!--      <Button type="info" plain>Info</Button>-->
+<!--      <Button type="warning" plain>Warning</Button>-->
+<!--      <Button type="danger" plain>Danger</Button><br /><br />-->
+<!--      <Button size="large">Large</Button>-->
+<!--      <Button size="small">Small</Button><br /><br />-->
+<!--      <Button size="large" loading>Loading</Button>-->
+<!--      <Button size="large" icon="address-card">Icon</Button><br /><br />-->
+<!--    </div>-->
+<!--        <Icon icon="arrow-up" :size="size" type="danger"/>-->
+<!--    <Input v-model="test" type="text" placeholder="基础文本框，请输入" />-->
+<!--    <span>{{test}}</span>-->
 
     <br/>
     <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>
@@ -100,7 +99,7 @@ const size = ref<any>('3x')
 onMounted(() => {
   createMessage({message:'hello message',duration:2000,showClose:true})
   createMessage({message:'hello message',duration:0,type: 'success',showClose:true})
-  createMessage({message:'hello message',duration:0,type: 'danger',showClose:true})
+  createMessage({message:'hello message',duration:0,type: 'error',showClose:true})
   // createMessage({message:'hello message',duration:1000,showClose:true})
   setTimeout(()=>{
     // openValue.value = ['a', 'b']
@@ -145,15 +144,28 @@ const selectOptions:SelectOption[]=[
   { value: '1', label:'item1' },
   { value: '2', label: 'item2' },
   { value: '3', label: 'item3', },
-  { value: '4', label: 'item4' }
+  { value: '4', label: 'item4',disabled:true }
 ]
-const selectValue=ref('1')
+const customRender=(option:any)=>{
+  return h('div',{className:'xyz'},[h('b',option.label),h('span',option.value)])
+}
+const selectValue=ref('')
+
+const handleFetch = (query) => {
+  if (!query) return Promise.resolve([])
+  return fetch(`https://api.github.com/search/repositories?q=${query}`)
+    .then((res) => res.json())
+    .then(({ items }) => {
+      return items.slice(0, 10).map((item) => ({ label: item.name, value: item.node_id }))
+    })
+}
 </script>
 
 <style>
 header {
   line-height: 1.5;
 }
+
 
 .logo {
   display: block;
@@ -175,5 +187,11 @@ header {
     place-items: flex-start;
     flex-wrap: wrap;
   }
+}
+.vk-select__menu-item,.xyz{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 </style>
