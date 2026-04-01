@@ -66,7 +66,7 @@
     <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>
     {{value}}
 
-    <Select v-model="selectValue" :options="selectOptions" placeholder="请选择"></Select>
+    <Select v-model="selectValue" :options="selectOptions" placeholder="请选择" filterable></Select>
     {{selectValue}}
   </div>
 </template>
