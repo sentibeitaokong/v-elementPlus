@@ -68,6 +68,10 @@
 
     <Select v-model="selectValue" :options="selectOptions" placeholder="请选择" filterable></Select>
     {{selectValue}}
+
+    <footer style="width: 100%;">
+      <Progress :strokeHeight="30" :percent="30"  type="info" :show-text="true"></Progress>
+    </footer>
   </div>
 </template>
 
@@ -91,6 +95,7 @@ import type {MenuOptions} from '@/components/Dropdown/types.ts'
 import { h } from 'vue'
 import {createMessage} from '@/components/Message/method.ts'
 import type { SelectOption } from '@/components/Select/types.ts'
+import Progress from '@/components/Progress/Progress.vue'
 
 //collasp默认打开
 const openValue = ref<string[]>(['a'])
