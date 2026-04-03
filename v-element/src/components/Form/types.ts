@@ -14,16 +14,12 @@ export type FormRules=Record<string, FormItemRule[]>
 
 export interface FormProps{
   model:Record<string, any>;
-  rules:FormRules;
+  rules?:FormRules;
 }
 
 export interface FormContext extends FormProps{
   addField:(field:FormItemContext)=>void;
   removeField:(field:FormItemContext)=>void;
-}
-
-export interface FormContext extends FormProps{
-
 }
 
 export interface FormValueFailure{

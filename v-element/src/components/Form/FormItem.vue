@@ -17,7 +17,6 @@
         {{ validateStatus.errorMsg }}
       </div>
     </div>
-    {{ innerValue }}-{{ itemRules }}
   </div>
 </template>
 

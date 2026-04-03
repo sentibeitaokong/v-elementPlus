@@ -58,8 +58,8 @@
     <!--      <Button size="large" icon="address-card">Icon</Button><br /><br />-->
     <!--    </div>-->
     <!--        <Icon icon="arrow-up" :size="size" type="danger"/>-->
-    <!--    <Input v-model="test" type="text" placeholder="基础文本框，请输入" />-->
-    <!--    <span>{{test}}</span>-->
+        <Input v-model="test" type="text" placeholder="基础文本框，请输入" />
+        <span>{{test}}</span>
 
     <br />
     <!--    <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>-->
