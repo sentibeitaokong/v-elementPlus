@@ -33,7 +33,7 @@ import type { SwitchEmits, SwitchProps } from '@/components/Switch/types.ts'
 import { ref,computed, onMounted, watch } from 'vue'
 defineOptions({
   name: 'VkSwitch',
-  inheritAttrs: false,
+  // inheritAttrs: false,
 })
 const emits = defineEmits<SwitchEmits>()
 const {activeText,inactiveText,modelValue,disabled,activeValue=true,inactiveValue=false} = defineProps<SwitchProps>()

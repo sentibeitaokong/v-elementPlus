@@ -133,10 +133,10 @@ const togglePasswordVisible = () => {
   passwordVisible.value = !passwordVisible.value
 }
 /* 可能的表单校验 */
-const formItemContext = inject(formItemContextKey)
-const runValidation = (trigger: string) => {
-  formItemContext?.validate?.(trigger).catch((e: any) => console.log(e.errors))
-}
+// const formItemContext = inject(formItemContextKey)
+// const runValidation = (trigger: string) => {
+//   formItemContext?.validate?.(trigger).catch((e: any) => console.log(e.errors))
+// }
 const keepFocuse = async () => {
   await nextTick()
   inputRef.value?.focus()
@@ -144,11 +144,11 @@ const keepFocuse = async () => {
 const handleInput = () => {
   emits('update:modelValue', innerValue.value)
   emits('input', innerValue.value)
-  runValidation('input')
+  // runValidation('input')
 }
 const handleChange = () => {
   emits('change', innerValue.value)
-  runValidation('change')
+  // runValidation('change')
 }
 const handleFocus = (event: FocusEvent) => {
   isFocus.value = true
@@ -157,7 +157,7 @@ const handleFocus = (event: FocusEvent) => {
 const handleBlur = (event: FocusEvent) => {
   isFocus.value = false
   emits('blur', event)
-  runValidation('blur')
+  // runValidation('blur')
 }
 const clear = () => {
   innerValue.value = ''
