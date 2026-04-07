@@ -3,7 +3,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import vueDevTools from 'vite-plugin-vue-devtools'
-import dts from 'unplugin-dts/vite'
 
 
 // https://vite.dev/config/
@@ -12,7 +11,6 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
-    dts({ tsconfigPath: './tsconfig.app.json',processor: 'vue' })
   ],
   resolve: {
     alias: {
@@ -20,10 +18,12 @@ export default defineConfig({
     },
   },
   build:{
+    outDir:'dist/umd',
     lib:{
       entry: 'src/index.ts',
       name:'XBElement',
-      fileName:'x-element'
+      fileName:'x-element',
+      formats:['umd']
     },
     rollupOptions:{
       external:['vue'],

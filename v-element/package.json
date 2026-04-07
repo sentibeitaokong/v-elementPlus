@@ -1,20 +1,52 @@
 {
-  "name": "v-element",
-  "version": "0.0.0",
-  "private": true,
+  "name": "xb-element",
+  "version": "1.0.0",
+  "description": "Vue3 components library",
+  "author": "Xun Bei",
+  "license": "MIT",
+  "keywords": [
+    "VUE3",
+    "Component",
+    "UI"
+  ],
+  "homepage": "https://github.com/sentibeitaokong",
+  "repository": "https://github.com/sentibeitaokong/v-elementPlus",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "dist/x-element.css"
+  ],
+  "main": "./dist/umd/x-element.umd.cjs",
+  "module": "./dist/es/x-element.js",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/x-element.js",
+      "require": "./dist/umd/x-element.umd.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
   },
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "npm run build-only &&npm run move-style",
     "preview": "vite preview",
     "test:unit": "vitest",
-    "build-only": "vite build",
+    "build-only": "run-p build-umd build-es",
+    "build-umd": "vite build --config vite.umd.config.ts",
+    "build-es": "vite build --config vite.es.config.ts",
+    "move-style": "move-file dist/es/x-element.css dist/x-element.css",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix --cache",
-    "format": "prettier --write --experimental-cli src/"
+    "format": "prettier --write --experimental-cli src/",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@floating-ui/vue": "^1.1.11",
@@ -25,6 +57,9 @@
     "@fortawesome/vue-fontawesome": "^3.1.2",
     "async-validator": "^4.2.5",
     "lodash-es": "^4.17.23",
+    "xb-element": "^1.0.0"
+  },
+  "peerDependencies": {
     "vue": "^3.5.25"
   },
   "devDependencies": {
@@ -37,6 +72,7 @@
     "@vitest/eslint-plugin": "^1.5.0",
     "@vue/eslint-config-prettier": "^10.2.0",
     "@vue/eslint-config-typescript": "^14.6.0",
+    "@vue/language-core": "^3.0.10",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.8.1",
     "autoprefixer": "^10.4.23",
@@ -55,9 +91,11 @@
     "postcss-nested": "^7.0.2",
     "prettier": "3.6.2",
     "typescript": "~5.9.0",
+    "unplugin-dts": "1.0.0-beta.6",
     "vite": "^7.2.4",
     "vite-plugin-vue-devtools": "^8.0.5",
     "vitest": "^4.0.16",
+    "vue": "^3.5.25",
     "vue-tsc": "^3.1.5"
   }
 }

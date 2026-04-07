@@ -1,11 +1,8 @@
-import Progress, { type ProgressProps } from './Progress'
 import type { App } from 'vue'
-
-export default {
-  install (app: App) {
-    app.component('VkProgress', Progress)
-  },
-  name: 'VKProgress',
+import Progress from '@/components/Progress/Progress.vue'
+Progress.install = (app: App) => {
+  app.component(Progress.name||'VkProgress', Progress)
 }
 
-export { Progress, type ProgressProps }
+export default Progress
+export * from './type'

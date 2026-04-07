@@ -8,19 +8,18 @@
   <!--    </Tooltip>-->
   <!--  </header>-->
   <main>
-    <!--    <Dropdown-->
-    <!--      :menu-options="menuOptions"-->
-    <!--      :trigger="trigger"-->
-    <!--      ref="tooltipRef"-->
-    <!--      placement="left"-->
-    <!--      :close-delay="200"-->
-    <!--      :open-delay="200"-->
-    <!--      manual-->
-    <!--      @visible-change="e=>inlineConsole('visibleChange',e)"-->
-    <!--      @select="e=>inlineConsole('select',e)"-->
-    <!--    >-->
-    <!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
-    <!--    </Dropdown>-->
+        <Dropdown
+          :menu-options="menuOptions"
+          :trigger="trigger"
+          ref="tooltipRef"
+          placement="left"
+          :close-delay="200"
+          :open-delay="200"
+          @visible-change="e=>inlineConsole('visibleChange',e)"
+          @select="e=>inlineConsole('select',e)"
+        >
+          <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
+        </Dropdown>
   </main>
   <!--  <header>-->
   <!--  </header>-->

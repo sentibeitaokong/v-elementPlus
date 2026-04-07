@@ -16,7 +16,7 @@
           <template v-for="item in menuOptions" :key="item.key">
             <li v-if="item.divided" role="separator" class="divided-placeholder"></li>
             <li
-              @click="($event) => itemClick(item)"
+              @click="() => itemClick(item)"
               class="vk-dropdown__item"
               :class="{ 'is-disabled': item.disabled, 'is-divided': item.divided }"
               :id="`dropdown-item-${item.key}`"
