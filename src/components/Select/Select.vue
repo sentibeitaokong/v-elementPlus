@@ -94,7 +94,7 @@ const {
   placeholder = '',
   disabled,
   options = [],
-  clearable = true,
+  clearable = false,
   filterable,
   filterMethod,
   remote,
