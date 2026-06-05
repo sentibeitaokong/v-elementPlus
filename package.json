@@ -26,6 +26,7 @@
       "import": "./dist/es/x-element.js",
       "require": "./dist/umd/x-element.umd.cjs"
     },
+    "./*": "./*",
     "./dist/": {
       "import": "./dist/",
       "require": "./dist/"
