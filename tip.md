@@ -10,3 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'  //导入组件
 import { fas } from '@fortawesome/free-solid-svg-icons'       //导入图标库
 library.add(fas)              //添加到核心
 app.component('font-awesome-icon', FontAwesomeIcon)      //全局挂载组件
+
+npm whoami    //查看是否登录npm
+npm login    //登录
+npm publish  //发布更新库
