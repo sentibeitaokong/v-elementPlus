@@ -26,10 +26,6 @@ export * from '@/components/Tooltip'
 export * from '@/components/Progress'
 export * from '@/components/Button'
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-library.add(fas)
-
 const components = [
   Button,
   Collapse,

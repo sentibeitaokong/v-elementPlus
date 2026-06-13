@@ -26,11 +26,14 @@ export default defineConfig({
       fileName:'x-element'
     },
     rollupOptions:{
-      external:['vue'],
+      external:['vue',"@fortawesome/fontawesome-svg-core","@fortawesome/free-solid-svg-icons","@fortawesome/vue-fontawesome"],
       output:{
         exports:'named',
         globals:{
-          vue:'Vue'
+          'vue':'Vue',
+          '@fortawesome/fontawesome-svg-core':'FontAwesomeSvgCore',
+          '@fortawesome/free-solid-svg-icons':'FreeSolidSvgIcons',
+          '@fortawesome/vue-fontawesome':'VueFontAwesome',
         },
 
         //修改输出css文件的名称
