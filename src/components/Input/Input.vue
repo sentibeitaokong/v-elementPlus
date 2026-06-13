@@ -50,20 +50,20 @@
         >
           <slot name="suffix"></slot>
           <Icon
-            icon="circle-xmark"
+            :icon="faCircleXmark"
             v-if="showClear"
             class="vk-input__clear"
             @click="clear"
             @mousedown.prevent="NOOP"
           ></Icon>
           <Icon
-            icon="eye"
+            :icon="faEye"
             v-if="showPasswordArea && passwordVisible"
             class="vk-input__password"
             @click="togglePasswordVisible"
           ></Icon>
           <Icon
-            icon="eye-slash"
+            :icon="faEyeSlash"
             v-if="showPasswordArea && !passwordVisible"
             class="vk-input__password"
             @click="togglePasswordVisible"
@@ -101,8 +101,11 @@
 import type { InputProps, InputEmits } from '@/components/Input/types.ts'
 import { computed, nextTick, ref, useAttrs, watch } from 'vue'
 import Icon from '@/components/Icon'
-import { inject } from 'vue'
-import { formItemContextKey } from '@/components/Form'
+import {faCircleXmark} from "@fortawesome/free-solid-svg-icons/faCircleXmark";
+import {faEye} from "@fortawesome/free-solid-svg-icons/faEye";
+import {faEyeSlash} from "@fortawesome/free-solid-svg-icons/faEyeSlash";
+// import { inject } from 'vue'
+// import { formItemContextKey } from '@/components/Form'
 
 defineOptions({
   name: 'VkInput',

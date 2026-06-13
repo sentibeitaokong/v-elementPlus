@@ -1,12 +1,12 @@
 <template>
-  <!--  <header style="display: inline-block">-->
-  <!--    <Tooltip :trigger="trigger" ref="tooltipRef" placement="bottom" :close-delay="200" manual :open-delay="200">-->
-  <!--      <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />-->
-  <!--      <template #content>-->
-  <!--        <h1>hello world</h1>-->
-  <!--      </template>-->
-  <!--    </Tooltip>-->
-  <!--  </header>-->
+    <header style="display: inline-block">
+      <Tooltip :trigger="trigger" ref="tooltipRef" placement="bottom" :close-delay="200" manual :open-delay="200">
+        <img src="./assets/logo.svg" width="125" height="125" style="border: 1px solid gray" alt="" />
+        <template #content>
+          <h1>hello world</h1>
+        </template>
+      </Tooltip>
+    </header>
   <main>
         <Dropdown
           :menu-options="menuOptions"
@@ -23,18 +23,18 @@
   </main>
   <!--  <header>-->
   <!--  </header>-->
-  <div>
-    <!--    <div>-->
-    <!--      <Collapse v-model="openValue" accordion>-->
-    <!--        <CollapseItem name="a" title="2222" disabled>-->
-    <!--          <div>aaaa</div>-->
-    <!--        </CollapseItem>-->
-    <!--        <CollapseItem name="b" title="333">-->
-    <!--          <div>aaaa</div>-->
-    <!--        </CollapseItem>-->
-    <!--      </Collapse>-->
-    <!--    </div>-->
-    <!--    <div>-->
+<!--  <div>-->
+        <div>
+          <Collapse v-model="openValue" accordion>
+            <CollapseItem name="a" title="2222" disabled>
+              <div>aaaa</div>
+            </CollapseItem>
+            <CollapseItem name="b" title="333">
+              <div>aaaa</div>
+            </CollapseItem>
+          </Collapse>
+        </div>
+        <div>
 
     <!--      <Button @click="open">Test Button</Button>-->
     <!--      <Button plain @click="close">Plain Button</Button>-->
@@ -54,22 +54,22 @@
     <!--      <Button size="large">Large</Button>-->
     <!--      <Button size="small">Small</Button><br /><br />-->
     <!--      <Button size="large" loading>Loading</Button>-->
-    <!--      <Button size="large" icon="address-card">Icon</Button><br /><br />-->
+          <Button size="large" :icon="faAddressCard">Icon</Button><br /><br />
     <!--    </div>-->
-    <!--        <Icon icon="arrow-up" :size="size" type="danger"/>-->
+            <Icon :icon="faArrowUp" :size="size" type="danger"/>
         <Input v-model="test" type="text" placeholder="基础文本框，请输入" />
         <span>{{test}}</span>
 
     <br />
-    <!--    <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>-->
-    <!--    {{value}}-->
+        <Switch active-text="off" inactive-text="on" active-value="right" inactive-value="wrong" v-model="value"></Switch>
+        {{value}}
 
-    <!--    <Select v-model="selectValue" :options="selectOptions" placeholder="请选择" filterable></Select>-->
-    <!--    {{selectValue}}-->
+        <Select v-model="selectValue" :options="selectOptions" placeholder="请选择" filterable></Select>
+        {{selectValue}}
 
-    <!--    <footer style="width: 100%;">-->
-    <!--      <Progress :strokeHeight="30" :percent="30"  type="info" :show-text="true"></Progress>-->
-    <!--    </footer>-->
+        <footer style="width: 100%;">
+          <Progress :strokeHeight="30" :percent="30"  type="info" :show-text="true"></Progress>
+        </footer>
     <div>
       <Form :model="model" :rules="rules" ref="formRef">
         <FormItem label="the email" prop="email">
@@ -117,6 +117,8 @@ import { h } from 'vue'
 import { createMessage } from '@/components/Message/method.ts'
 import type { SelectOption } from '@/components/Select/types.ts'
 import Progress from '@/components/Progress/Progress.vue'
+import {faAddressCard} from "@fortawesome/free-solid-svg-icons/faAddressCard";
+import {faArrowUp} from "@fortawesome/free-solid-svg-icons/faArrowUp";
 
 //collasp默认打开
 const openValue = ref<string[]>(['a'])
